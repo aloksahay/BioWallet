@@ -21,7 +21,6 @@ class WalletManager {
 #if DEBUG
             print("Private key not valid")
 #endif
-//            self.showAlertMessage(title: "Error", message: "Please enter a valid Private key ", actionName: "Ok")
             return
         }
         do {
@@ -34,8 +33,6 @@ class WalletManager {
                 print("Address :::>>>>> ", manager.addresses as Any)
 #endif
                 let walletAddress = manager.addresses?.first?.address
-//                self.walletAddressLabel.text = walletAddress ?? "0x"
-
                 print(walletAddress as Any)
             } else {
                 print("error")
@@ -45,13 +42,9 @@ class WalletManager {
             print("error creating keyStore")
             print("Private key error.")
 #endif
-//            let alert = UIAlertController(title: "Error", message: "Please enter correct Private key", preferredStyle: .alert)
-//            let okAction = UIAlertAction(title: "OK", style: .destructive)
-//            alert.addAction(okAction)
-//            self.present(alert, animated: true)
         }
     }
-
+    
     fileprivate func createMnemonics() {
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let web3KeystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
@@ -64,7 +57,7 @@ class WalletManager {
                 }
                 self._mnemonics = tMnemonics
                 print(_mnemonics)
-
+                
                 let tempWalletAddress = try? BIP32Keystore(mnemonics: self._mnemonics, password: "", prefixPath: "m/44'/77777'/0'/0")
                 guard let walletAddress = tempWalletAddress?.addresses?.first else {
                     print("Unable to create wallet")
@@ -77,17 +70,31 @@ class WalletManager {
 #endif
                 let keyData = try? JSONEncoder().encode(tempWalletAddress?.keystoreParams)
                 FileManager.default.createFile(atPath: userDir + "/keystore" + "/key.json", contents: keyData, attributes: nil)
+                
+                // Save the private key to the Secure Enclave
+                
+                let accessControl = SecAccessControlCreateWithFlags(nil, kSecAttrAccessibleWhenUnlockedThisDeviceOnly, .privateKeyUsage, nil)!
+                let privateKeyAttrs: [String: Any] = [
+                    kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
+                    kSecAttrKeyClass as String: kSecAttrKeyClassPrivate,
+                    kSecAttrAccessControl as String: accessControl,
+                    kSecValueData as String: privateKey!
+                ]
+                let savePrivateKeyStatus = SecItemAdd(privateKeyAttrs as CFDictionary, nil)
+                guard savePrivateKeyStatus == errSecSuccess else {
+                    print("Failed to save private key to Secure Enclave: \(savePrivateKeyStatus)")
+                    return
+                }
             }
         } catch {
-
+            //error handling here
         }
-
     }
     
     func importWalletWith(mnemonics: String) {
         let walletAddress = try? BIP32Keystore(mnemonics: mnemonics, password: "", prefixPath: "m/44'/77777'/0'/0")
         if let publicAddress = walletAddress?.addresses?.first?.address {
-          print(publicAddress) //public key
+            print(publicAddress) //public key
         }
     }
 }

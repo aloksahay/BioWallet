@@ -14,6 +14,7 @@ class LandingViewController : BaseViewController {
     @IBOutlet weak var authImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var passcodeTextField: UITextField!
+    @IBOutlet weak var passcodeStackView: UIStackView!
     
     private let passcodeLength = 8
     private var passcode = ""
@@ -28,8 +29,29 @@ class LandingViewController : BaseViewController {
 extension LandingViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.titleLabel.text = ""
-        checkPasscodeValidity(passcodeString: textField.text)
+        
+        if textField.text?.isEmpty == false {
+            checkPasscodeValidity(passcodeString: textField.text)
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let passcodeCharViews = passcodeStackView.arrangedSubviews
+        let enteredChar = string
+        
+        if passcode.count < passcodeLength {
+            passcode += enteredChar
+            let view = passcodeCharViews[passcode.count - 1]
+                                UIView.animate(withDuration: 0.2, delay: 0 , options: [], animations: {
+                                    view.alpha = 1.0
+                                })
+        } else if passcode.count == passcodeLength {
+            textField.resignFirstResponder()
+            proceedToDashboard()
+        }
+        
+        return false
     }
     
 }
@@ -57,7 +79,9 @@ extension LandingViewController {
     
     func checkPasscodeAuthentication() {
         titleLabel.text = "Enter 8 digit passcode"
-        UIView.animate(withDuration: 0.5, animations: {
+        passcodeTextField.becomeFirstResponder()
+        passcodeStackView.alpha = 1.0
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations: {
             self.authImageView.alpha = 0.0
         })
     }
@@ -72,6 +96,7 @@ extension LandingViewController {
         } else if passcodeString.count == passcodeLength {
             if validatePasscode(passcode) {
                 // Take appropriate action when passcode is correct
+                passcodeTextField.resignFirstResponder()
             } else {
                 // Show error message and reset passcode
                 titleLabel.text = "Incorrect passcode"
@@ -82,6 +107,12 @@ extension LandingViewController {
     
     private func validatePasscode(_ passcode: String) -> Bool {
         // Validate the passcode here and return true if it is correct
-        return passcode == KeyManager.sharedKeyManager.retrievePasskey()
+        return passcode == KeyManager.sharedManager.retrievePasskey()
+    }
+    
+    private func proceedToDashboard() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        }
+        
     }
 }

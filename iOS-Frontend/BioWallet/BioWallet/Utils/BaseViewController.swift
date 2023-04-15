@@ -10,6 +10,16 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let backgroundImageView = UIImageView(frame: view.bounds)
+        let backgroundImage = UIImage(named: "gradient")
+        backgroundImageView.image = backgroundImage
+        backgroundImageView.contentMode = .scaleAspectFill
+        view.addSubview(backgroundImageView)
+        view.sendSubviewToBack(backgroundImageView)
+    }
+    
          func showImportAlert() {
             let alert = UIAlertController(title: "MyWeb3Wallet", message: "", preferredStyle: .alert)
             alert.addTextField { textfied in

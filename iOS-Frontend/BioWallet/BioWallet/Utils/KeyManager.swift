@@ -14,7 +14,34 @@ class KeyManager {
         static let accountPassKey = "com.biowallet.passkey"
     }
     
-    static let sharedKeyManager = KeyManager()
+    static let sharedManager = KeyManager()
+    
+    func generatePrivateKey() {
+
+        guard let privateKey = SecKeyCreateRandomKey([
+            kSecAttrKeyType: kSecAttrKeyTypeECSECPrimeRandom,
+            kSecAttrKeySizeInBits: 256,
+            kSecAttrTokenID: kSecAttrTokenIDSecureEnclave,
+            kSecPrivateKeyAttrs: [
+                kSecAttrIsPermanent: true
+            ]
+        ] as CFDictionary, nil) else {
+            // Handle error
+            fatalError("Failed to generate private key")
+        }
+
+        var error: Unmanaged<CFError>?
+        guard let privateKeyData = SecKeyCopyExternalRepresentation(privateKey, &error) as Data? else {
+            // Handle error
+            fatalError("Failed to extract private key data")
+        }
+
+        let privateKeyHex = privateKeyData.map { String(format: "%02x", $0) }.joined()
+        print(privateKeyHex) // Print the hexadecimal representation of the private key
+
+        
+    }
+    
     
     func savePasskey(_ passkey: String) -> Bool {
         guard let data = passkey.data(using: String.Encoding.utf8) else {
