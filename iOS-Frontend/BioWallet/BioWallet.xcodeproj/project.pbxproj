@@ -13,6 +13,12 @@
 		5CCDE08229EAD03600E86536 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCDE08029EAD03600E86536 /* Main.storyboard */; };
 		5CCDE08429EAD03700E86536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCDE08329EAD03700E86536 /* Assets.xcassets */; };
 		5CCDE08729EAD03700E86536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCDE08529EAD03700E86536 /* LaunchScreen.storyboard */; };
+		5CCDE09029EAD6EA00E86536 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CCDE08F29EAD6EA00E86536 /* web3swift */; };
+		5CCDE09329EAD88F00E86536 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDE09229EAD88F00E86536 /* WalletManager.swift */; };
+		5CCDE09629EAD95200E86536 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDE09529EAD95200E86536 /* BaseViewController.swift */; };
+		5CCDE09929EADECE00E86536 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDE09829EADECE00E86536 /* WalletViewController.swift */; };
+		5CCDE09B29EAE99B00E86536 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDE09A29EAE99B00E86536 /* LandingViewController.swift */; };
+		5CCDE09D29EAEB0400E86536 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDE09C29EAEB0400E86536 /* KeyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,11 @@
 		5CCDE08329EAD03700E86536 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CCDE08629EAD03700E86536 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CCDE08829EAD03700E86536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CCDE09229EAD88F00E86536 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
+		5CCDE09529EAD95200E86536 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		5CCDE09829EADECE00E86536 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		5CCDE09A29EAE99B00E86536 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		5CCDE09C29EAEB0400E86536 /* KeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CCDE09029EAD6EA00E86536 /* web3swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +68,44 @@
 		5CCDE07929EAD03600E86536 /* BioWallet */ = {
 			isa = PBXGroup;
 			children = (
+				5CCDE09429EAD93C00E86536 /* Utils */,
+				5CCDE09729EADE7800E86536 /* Modules */,
+				5CCDE09129EAD6FD00E86536 /* Web3Stuff */,
 				5CCDE07A29EAD03600E86536 /* AppDelegate.swift */,
 				5CCDE07C29EAD03600E86536 /* SceneDelegate.swift */,
-				5CCDE07E29EAD03600E86536 /* ViewController.swift */,
 				5CCDE08029EAD03600E86536 /* Main.storyboard */,
 				5CCDE08329EAD03700E86536 /* Assets.xcassets */,
 				5CCDE08529EAD03700E86536 /* LaunchScreen.storyboard */,
 				5CCDE08829EAD03700E86536 /* Info.plist */,
 			);
 			path = BioWallet;
+			sourceTree = "<group>";
+		};
+		5CCDE09129EAD6FD00E86536 /* Web3Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				5CCDE09229EAD88F00E86536 /* WalletManager.swift */,
+			);
+			path = Web3Stuff;
+			sourceTree = "<group>";
+		};
+		5CCDE09429EAD93C00E86536 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5CCDE09529EAD95200E86536 /* BaseViewController.swift */,
+				5CCDE09C29EAEB0400E86536 /* KeyManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5CCDE09729EADE7800E86536 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5CCDE07E29EAD03600E86536 /* ViewController.swift */,
+				5CCDE09829EADECE00E86536 /* WalletViewController.swift */,
+				5CCDE09A29EAE99B00E86536 /* LandingViewController.swift */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +124,9 @@
 			dependencies = (
 			);
 			name = BioWallet;
+			packageProductDependencies = (
+				5CCDE08F29EAD6EA00E86536 /* web3swift */,
+			);
 			productName = BioWallet;
 			productReference = 5CCDE07729EAD03600E86536 /* BioWallet.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +155,9 @@
 				Base,
 			);
 			mainGroup = 5CCDE06E29EAD03600E86536;
+			packageReferences = (
+				5CCDE08E29EAD6EA00E86536 /* XCRemoteSwiftPackageReference "web3swift" */,
+			);
 			productRefGroup = 5CCDE07829EAD03600E86536 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +185,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CCDE09629EAD95200E86536 /* BaseViewController.swift in Sources */,
+				5CCDE09B29EAE99B00E86536 /* LandingViewController.swift in Sources */,
 				5CCDE07F29EAD03600E86536 /* ViewController.swift in Sources */,
 				5CCDE07B29EAD03600E86536 /* AppDelegate.swift in Sources */,
+				5CCDE09329EAD88F00E86536 /* WalletManager.swift in Sources */,
 				5CCDE07D29EAD03600E86536 /* SceneDelegate.swift in Sources */,
+				5CCDE09929EADECE00E86536 /* WalletViewController.swift in Sources */,
+				5CCDE09D29EAEB0400E86536 /* KeyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -358,6 +410,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5CCDE08E29EAD6EA00E86536 /* XCRemoteSwiftPackageReference "web3swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/web3swift-team/web3swift.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5CCDE08F29EAD6EA00E86536 /* web3swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CCDE08E29EAD6EA00E86536 /* XCRemoteSwiftPackageReference "web3swift" */;
+			productName = web3swift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5CCDE06F29EAD03600E86536 /* Project object */;
 }
