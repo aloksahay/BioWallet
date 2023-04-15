@@ -32,10 +32,13 @@ class WalletManager {
                 print("Address :::>>>>> ", address as Any)
                 print("Address :::>>>>> ", manager.addresses as Any)
 #endif
-                let walletAddress = manager.addresses?.first?.address
-                print(walletAddress as Any)
+                if let walletAddress = manager.addresses?.first?.address {
+                    self._walletAddress = walletAddress
+                } else {
+                    print("error creating wallet")
+                }
             } else {
-                print("error")
+                print("error creating wallet")
             }
         } catch {
 #if DEBUG
@@ -94,7 +97,10 @@ class WalletManager {
     func importWalletWith(mnemonics: String) {
         let walletAddress = try? BIP32Keystore(mnemonics: mnemonics, password: "", prefixPath: "m/44'/77777'/0'/0")
         if let publicAddress = walletAddress?.addresses?.first?.address {
+            self._walletAddress = publicAddress
             print(publicAddress) //public key
+        } else {
+            print("error importing wallet")
         }
     }
 }
