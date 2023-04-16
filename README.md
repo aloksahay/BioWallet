@@ -8,6 +8,9 @@ https://github.com/gelatodigital/web3-functions-template
 
 # BioWallet-contracts
 
+See the first transactions on Goerli using Account Abstraction:
+https://goerli.etherscan.io/address/0x9f26e38df18ba21bb369f3549f9a5f93887c8fc5#internaltx
+
 BioWallet is an iOS app that allows users to secure their digital assets using facial recognition and nominees. It utilizes two key contracts, TrustedTxModifier and Identifier, to enhance security and functionality.
 
 The TrustedTxModifier is a custom Safe modifier that allows an owner to execute transactions if an off-chain signature, verified through facial recognition, corresponds to the owner of the modifier. This enables BioWallet to execute transactions on behalf of users who have been verified through facial recognition.
