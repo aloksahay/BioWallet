@@ -112,7 +112,8 @@ extension LandingViewController {
     
     private func proceedToDashboard() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        }
+            self.performSegue(withIdentifier: "loadDashboard", sender: nil)
+        }
         
     }
 }

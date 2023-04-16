@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C99D2D029EB60B800683E09 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C99D2CF29EB60B800683E09 /* DashViewController.swift */; };
 		5CCDE07B29EAD03600E86536 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDE07A29EAD03600E86536 /* AppDelegate.swift */; };
 		5CCDE07D29EAD03600E86536 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDE07C29EAD03600E86536 /* SceneDelegate.swift */; };
 		5CCDE07F29EAD03600E86536 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDE07E29EAD03600E86536 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C99D2CF29EB60B800683E09 /* DashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
 		5CCDE07729EAD03600E86536 /* BioWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BioWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCDE07A29EAD03600E86536 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CCDE07C29EAD03600E86536 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				5CCDE07E29EAD03600E86536 /* ViewController.swift */,
 				5CCDE09829EADECE00E86536 /* WalletViewController.swift */,
 				5CCDE09A29EAE99B00E86536 /* LandingViewController.swift */,
+				5C99D2CF29EB60B800683E09 /* DashViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CCDE09629EAD95200E86536 /* BaseViewController.swift in Sources */,
+				5C99D2D029EB60B800683E09 /* DashViewController.swift in Sources */,
 				5CCDE09B29EAE99B00E86536 /* LandingViewController.swift in Sources */,
 				5CCDE07F29EAD03600E86536 /* ViewController.swift in Sources */,
 				5CCDE07B29EAD03600E86536 /* AppDelegate.swift in Sources */,
